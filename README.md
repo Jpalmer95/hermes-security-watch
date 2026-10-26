@@ -8,16 +8,18 @@ It suggests updates. It does not apply them, edit config, rotate credentials, or
 
 ```bash
 hermes skills tap add Jpalmer95/hermes-security-watch
-hermes skills install Jpalmer95/hermes-security-watch
+hermes skills install Jpalmer95/hermes-security-watch/skills/hermes-security-watch
 ```
 
-Or clone this repo and symlink `SKILL.md`'s directory into `~/.hermes/skills/security/hermes-security-watch`.
+The `skills/` segment is required. Hermes taps look there, and the installer copies `scripts/` only when they live inside the skill directory.
+
+Or clone this repo and symlink `skills/hermes-security-watch` into `~/.hermes/skills/security/hermes-security-watch`.
 
 ## Report
 
 ```bash
-python3 scripts/security_watch.py report
-python3 scripts/security_watch.py report --out ~/.hermes/security-watch/latest-report.md
+python3 skills/hermes-security-watch/scripts/security_watch.py report
+python3 skills/hermes-security-watch/scripts/security_watch.py report --out ~/.hermes/security-watch/latest-report.md
 ```
 
 The report uses:
@@ -32,10 +34,10 @@ The report uses:
 ## Alerts
 
 ```bash
-python3 scripts/security_watch.py baseline   # remember current items; no backlog alert
+python3 skills/hermes-security-watch/scripts/security_watch.py baseline   # remember current items; no backlog alert
 ```
 
-Schedule `scripts/cron_watch.py` with no arguments. Hermes cron runs a script path, not a command line. Empty stdout means nothing new.
+Schedule `skills/hermes-security-watch/scripts/cron_watch.py` with no arguments. Hermes cron runs a script path, not a command line. Empty stdout means nothing new.
 
 On a terminal session, cron output is not delivered back into the chat unless `deliver` is a gateway channel such as `all` or Telegram.
 

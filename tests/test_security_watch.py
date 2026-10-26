@@ -9,7 +9,7 @@ import unittest
 from datetime import date
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "skills" / "hermes-security-watch" / "scripts"))
 
 import security_watch as sw  # noqa: E402
 
